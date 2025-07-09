@@ -1,0 +1,367 @@
+/* General body and font setup */
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: rgb(22, 20, 24); /* Dark background */
+  color: #eee; /* Light text color */
+  user-select: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Ensure it takes full viewport height */
+  padding: 2rem 1rem; /* Add some padding for smaller screens */
+  box-sizing: border-box;
+  position: relative; /* For the ::before pseudo-element */
+}
+
+/* Background "Kiberbash" text */
+.bg {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1; /* Place it behind the content */
+}
+
+.bg h1 {
+  font-size: 20rem; /* Large text as inspired */
+  filter: opacity(0.05); /* Very subtle opacity */
+  color: #eee; /* Light color for the background text */
+  margin: 0; /* Remove default margin */
+}
+
+/* Main NFT-style card container for the resume */
+.nft-card-container {
+  user-select: none;
+  max-width: 1000px; /* Adjusted max-width for resume content */
+  width: 95%; /* Responsive width */
+  margin: 2rem auto; /* Adjusted margin to fit the page better */
+  border: 1px solid #ffffff22;
+  background-color: #282c34;
+  background: linear-gradient(0deg, rgba(40,44,52,1) 0%, rgba(17,0,32,.5) 100%);
+  box-shadow: 0 7px 20px 5px #00000088;
+  border-radius: .7rem;
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+  overflow: hidden;
+  transition: .5s all;
+  position: relative; /* For the ::before pseudo-element */
+  z-index: 1; /* Ensure it's above the .bg */
+}
+
+/* Pseudo-element for the glowing effect on hover */
+.nft-card-container::before {
+  position: absolute; /* Changed from fixed to absolute */
+  content: "";
+  box-shadow: 0 0 100px 40px #ffffff08;
+  top: -10%;
+  left: -100%;
+  transform: rotate(-45deg);
+  height: 60rem;
+  transition: .7s all;
+  z-index: -1; /* Place behind the content within the card */
+}
+
+/* Hover effects for the main resume card */
+.nft-card-container:hover {
+  border: 1px solid #ffffff44;
+  box-shadow: 0 7px 50px 10px #000000aa;
+  transform: scale(1.005); /* Slightly less dramatic scale than original NFT */
+  filter: brightness(1.1); /* Slightly less bright */
+}
+
+.nft-card-container:hover::before {
+  filter: brightness(.5);
+  top: -100%;
+  left: 100%; /* Adjusted left to match the original effect more closely */
+}
+
+
+/* Main content wrapper inside the NFT card */
+.main-resume-content {
+  display: flex;
+  flex-direction: column;
+  width: 95%; /* Adjusted width for content inside the card */
+  padding: 1.5rem; /* Increased padding */
+  box-sizing: border-box; /* Include padding in width */
+}
+
+/* Horizontal rule style */
+hr {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #88888855;
+  margin-top: 0;
+}
+
+ins {
+  text-decoration: none;
+}
+
+/* Main Header */
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #88888855; /* Subtle separator */
+}
+
+.header-text {
+  flex-grow: 1;
+  text-align: left;
+  padding-right: 1.5rem;
+}
+
+.main-header h1 {
+  font-size: 2.8em;
+  color: #eee;
+  margin-bottom: 0.2rem;
+  line-height: 1.2;
+}
+
+.main-header h2 {
+  font-size: 1.6em;
+  color: #a89ec9; /* Similar to description color in NFT */
+  margin-top: 0;
+  line-height: 1.2;
+}
+
+.robot-animation {
+  flex-shrink: 0;
+  border-radius: 50%;
+  overflow: hidden; /* Ensure lottie player doesn't overflow */
+  background: rgba(17,0,32,.3); /* Subtle dark background for the lottie player holder */
+  box-shadow: inset 0 0 0 3px #ffffff22; /* Inner border for the circle */
+}
+
+.robot-animation lottie-player {
+  display: block; /* Ensure it takes full space */
+}
+
+/* Resume Column Wrapper */
+.resume-columns-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem; /* Space between columns */
+}
+
+.left-column, .right-column {
+  flex: 1;
+  min-width: 300px; /* Minimum width before wrapping */
+  padding: 0; /* Remove column padding as sections will have it */
+}
+
+/* Responsive adjustment for columns */
+@media (max-width: 768px) {
+    .resume-columns-wrapper {
+        flex-direction: column;
+    }
+    .left-column, .right-column {
+        min-width: unset;
+        width: 100%;
+    }
+}
+
+
+/* Sections within columns - acting like individual cards */
+.section-card {
+  margin-bottom: 1.5rem; /* Space between sections */
+  padding: 1.5rem;
+  border-radius: .5rem; /* Slightly rounded corners */
+  background: rgba(40,44,52,.7); /* Slightly lighter dark background for sections */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3); /* Soft inner shadow */
+  border: 1px solid #ffffff11; /* Subtle border */
+  transition: .3s all; /* Smooth transition for section hover */
+}
+
+.section-card:last-child {
+  margin-bottom: 0; /* No margin below the last section */
+}
+
+.section-card h3 {
+  color: #ee83e5; /* Highlight section titles with a vibrant color */
+  font-size: 1.4em;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #88888833; /* Lighter separator for titles */
+}
+
+.section-card:hover {
+  box-shadow: 0 4px 15px rgba(0,0,0,0.5); /* Slightly stronger shadow on hover */
+  transform: translateY(-3px); /* Subtle lift effect */
+}
+
+/* Profile Picture */
+.profile-pic-container {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    padding: 0.5rem; /* Padding to create a border effect */
+    border-radius: 50%; /* Circle the container */
+    border: 1px solid #ffffff22; /* Outer border */
+    background: rgba(40,44,52,.7); /* Match section background */
+    box-shadow: inset 0 0 0 4px rgba(0,0,0,0.3), 0 5px 15px rgba(0,0,0,0.5); /* Inset shadow and outer shadow */
+    width: fit-content; /* Fit to content */
+    margin-left: auto;
+    margin-right: auto;
+    transition: .3s all;
+}
+
+.profile-pic-container:hover {
+    transform: scale(1.02); /* Slight scale on hover */
+    box-shadow: inset 0 0 0 4px #ee83e5, 0 5px 20px rgba(0,0,0,0.7); /* Change border/shadow on hover */
+}
+
+
+.profile-pic {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%; /* Circular image */
+    object-fit: cover;
+    border: 1px solid #ffffff22; /* Inner border for the image */
+    display: block; /* Remove extra space below image */
+}
+
+
+/* General Paragraph and List Styling */
+p, ul {
+    font-size: 1em;
+    line-height: 1.6;
+    color: #eee; /* Light color for general text */
+    margin-bottom: 10px;
+}
+
+ul {
+    list-style-type: disc;
+    margin-left: 1.5rem;
+    padding: 0;
+}
+
+ul li {
+    margin-bottom: 0.3rem;
+}
+
+/* Links */
+a {
+    color: #007bff; /* Standard blue, might need to adjust for dark theme */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #ee83e5; /* A more vibrant hover color for dark theme */
+    text-decoration: underline;
+}
+
+/* Icon Holders (for phone, email, etc.) */
+.icon-holder {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 25px; /* Smaller size for icons */
+    height: 25px;
+    border-radius: 50%;
+    background: rgba(17,0,32,.3); /* Subtle dark background */
+    box-shadow: inset 0 0 0 2px #ffffff22; /* Subtle inner border */
+    margin-right: 0.8rem; /* Space between icon and text */
+    flex-shrink: 0;
+    transition: .3s all;
+    cursor: pointer;
+}
+
+.icon-holder i {
+    color: #ee83e5; /* Vibrant color for icons */
+    font-size: 0.9em; /* Slightly smaller icon */
+}
+
+.icon-holder:hover {
+    box-shadow: inset 0 0 0 2px #ee83e5; /* Highlight border on hover */
+    transform: scale(1.1);
+}
+
+/* Adjustments for text next to icon holders */
+.contact-info p, .recommendation-link {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.7rem;
+}
+.contact-info p:last-child, .recommendation-link:last-child {
+    margin-bottom: 0;
+}
+
+
+/* Headings within sections (not main headings) */
+h4 {
+    font-size: 1.1em;
+    color: #eee;
+    margin-bottom: 0.5rem;
+    margin-top: 1rem;
+}
+
+h5 {
+    font-size: 0.95em;
+    color: #a89ec9;
+    margin-bottom: 0.5rem;
+    margin-top: 0.2rem;
+}
+
+.skills-subheading {
+    margin-top: 1.5rem; /* More space above subheading */
+    color: #ee83e5; /* Match section title color */
+    font-weight: bold;
+    padding-bottom: 0.3rem;
+    border-bottom: 1px solid #88888833;
+}
+
+.soft-skills {
+    font-style: italic;
+    color: #a89ec9;
+}
+
+
+/* Job and Certification Items */
+.job, .certification-item {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px dashed #88888833; /* Lighter dashed separator */
+}
+
+.job:last-child, .certification-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.job-meta {
+    font-size: 0.9em;
+    color: #a89ec9;
+    margin-bottom: 0.3rem;
+}
+
+.job-date {
+    font-weight: bold;
+    color: #eee;
+}
+
+.recommendation-link {
+    margin-top: 1rem;
+    font-size: 0.95em;
+}
+
+.cert-issuer {
+    font-size: 0.85em;
+    color: #a89ec9;
+    margin-top: -0.2rem;
+    margin-bottom: 0.3rem;
+}
+
+.cert-desc {
+    font-size: 0.9em;
+    color: #eee;
+}
